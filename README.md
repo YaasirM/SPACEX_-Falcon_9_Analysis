@@ -87,7 +87,8 @@ By now, we should obtain some preliminary insights about how each important vari
 Now that the dataset has been repurposed, we will utilise SQL and ask the dataset some questions to discover more about Falcon 9.
 
 ### Question 1
-Display the names of the unique launch sites in the space mission
+Display the names of the unique launch sites in the space mission.
+
 ```sql
 SELECT
  DISTINCT LAUNCH_SITE
@@ -100,7 +101,8 @@ FROM
 This query identifies the distinct launch sites used for Falcon 9 rocket launches. The variety of launch sites—like CCAFS LC-40, VAFB SLC-4E, and KSC LC-39A—could indicate different geographic and operational constraints impacting each mission's launch success.
 
 ### Question 2
-Display 5 records where launch sites begin with the string 'CCA'
+Display 5 records where launch sites begin with the string 'CCA'.
+
 ```sql
 SELECT
  LAUNCH_SITE
@@ -120,7 +122,8 @@ LIMIT
 This query narrows down launches from sites starting with 'CCA', likely referring to Cape Canaveral launch sites. Repeated entries for CCAFS LC-40 suggest frequent use of this site for Falcon 9 missions. Repeated successful landings at specific launch sites can give us insight into which sites are more suited for recovery attempts. If a launch site consistently achieves successful landings, this could be an indicator for future predictions at this site.
 
 ### Question 3
-Display the total payload mass carried by boosters launched by NASA (CRS)
+Display the total payload mass carried by boosters launched by NASA (CRS).
+
 ```sql
 SELECT
  sum(payload_mass__kg_) AS sum
@@ -134,7 +137,8 @@ WHERE
 NASA (CRS) missions have a total payload mass of 45,596 kg. Since payload size can affect the rocket's performance, a larger payload could strain the rocket’s ability to return its first stage successfully. Larger payload masses may reduce the amount of fuel available for stage recovery. If the payload is large, the Falcon 9 may not have enough fuel left after delivering it to orbit, decreasing the likelihood of a successful landing.
 
 ### Question 4
-Display average payload mass carried by booster version F9 v1.1
+Display average payload mass carried by booster version F9 v1.1.
+
 ```sql
 SELECT
  AVG(payload_mass__kg_) AS Average
@@ -164,7 +168,8 @@ WHERE
 The first successful ground pad landing occurred on 2015-12-22. This provides a benchmark for Falcon 9’s ability to land its first stage on land. This milestone suggests that SpaceX’s technology has evolved over time, and this historical success can serve as a reference for predicting future landings, especially for missions targeting ground recovery.
 
 ### Question 6
-List the names of the boosters which have success in drone ship and have payload mass greater than 4000 but less than 6000
+List the names of the boosters which have success in drone ship and have payload mass greater than 4000 but less than 6000.
+
 ```sql
 SELECT
  Booster_Version
@@ -182,7 +187,7 @@ WHERE
 Successful drone ship landings occurred for boosters with payloads ranging from 4000 to 6000 kg, suggesting that such payload sizes are conducive to successful recovery on the drone ship. Drone ship landings are more likely when the payload is within this range. Therefore, the first stage may have enough fuel to reach the drone ship without the excessive weight from larger payloads.
 
 ### Question 7
-List the total number of successful and failure mission outcomes
+List the total number of successful and failure mission outcomes.
 
 ```sql
 SELECT
@@ -198,6 +203,7 @@ Most missions ended successfully (98), while a few had unclear payload statuses 
 
 ### Question 8
 List the names of the booster_versions which have carried the maximum payload mass.
+
 ```sql
 SELECT Booster_Version, Max
 FROM (
@@ -215,6 +221,7 @@ FROM (
 The F9 B5 B1060 series boosters carry the maximum payload mass of 15,600 kg, which could indicate the upper limits of Falcon 9's payload capacity. Heavy payloads like these are less likely to be able to land successfully. With such high payloads, there may be insufficient fuel for a first-stage recovery, especially on long-distance missions requiring more fuel for orbital insertion.
 
 ### Question 9
+List the records which will display the month names, failure landing_outcomes in drone ship ,booster versions, launch_site for the months in year 2015.
 
 ```sql
 SELECT 
@@ -233,6 +240,7 @@ WHERE SUBSTR(Date, 1, 4) = '2015'
 The failures of drone ship landings occurred in April and October, indicating that even successful programs like Falcon 9 have challenges with landings at certain times. These failures can be indicative of weather conditions, sea conditions, or other environmental factors that affect drone ship landings. Recognizing these trends can help predict when conditions are more likely to cause landing failures.
 
 ### Question 10
+Find the count of landing outcomes (such as Failure (drone ship) or Success (ground pad)) between the date 2010-06-04 and 2017-03-20 (completed in descending order).
 
 ```sql
 SELECT 
