@@ -66,6 +66,13 @@ From the graph we can see that only 4 Orbit types have a success rate of 100%, w
 ## Flight Number vs Orbit Type
 Here we will create another scatter graph between the flight number and the orbit type:
 
+```python
+sns.catplot(y="Orbit", x="FlightNumber", hue="Class", data=df, aspect = 5)
+plt.xlabel("FlightNumber",fontsize=20)
+plt.ylabel("Orbit",fontsize=20)
+plt.show()
+```
+
 ![Flight Number vs Orbit Type](https://github.com/YaasirM/SPACEX_Falcon_9_Analysis/blob/main/assets/images/Flight%20Number%20vs%20Orbit%20Type.png)
 
 *Flight Number vs Orbit Type*
@@ -74,6 +81,13 @@ The only other orbit types that share the same success rate (apart from 100%) ar
 
 ## Payload vs Orbit Type 
 For the last visualisation, we will be creating a scatter graph between the payload and the orbit type:
+
+```python
+sns.catplot(y="Orbit", x="PayloadMass", hue="Class", data=df, aspect = 5)
+plt.xlabel("PayloadMass",fontsize=20)
+plt.ylabel("Orbit",fontsize=20)
+plt.show()
+```
 
 ![Payload vs Orbit Type](https://github.com/YaasirM/SPACEX_Falcon_9_Analysis/blob/main/assets/images/Payload%20vs%20Orbit%20Type.png)
 
